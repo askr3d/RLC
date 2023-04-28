@@ -28,7 +28,7 @@ int main(){
         vector<pair<char, uint16_t>> data_comprimida = rlc_compresor(data);
 
         
-        escribirEnArchivo(data_comprimida, "rlc"+nombreArchivo);
+        escribirEnArchivo(data_comprimida, nombreArchivo.substr(0, nombreArchivo.find_last_of("."))+".rlc" );
     }
 
 
@@ -64,7 +64,7 @@ void escribirEnArchivo(vector<pair<char, uint16_t>> data_comprimida, string nomb
 
     archivoComprimido.write(reinterpret_cast<char*>(cabecera), sizeof(cabecera));
 
-    for(auto &pair : data_comprimida){
+    for(pair<char, uint16_t> &pair : data_comprimida){
         archivoComprimido.write(reinterpret_cast<char*>(&pair.first), sizeof(pair.first));
         archivoComprimido.write(reinterpret_cast<char*>(&pair.second), sizeof(pair.second));
     }

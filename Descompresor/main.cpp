@@ -22,7 +22,7 @@ int main(){
         
         vector<char> data_descomprimida = rlc_descompresor(data_comprimida);
 
-        escribirArchivoDescomprimido(data_descomprimida, "desRlc"+nombreArchivo);
+        escribirArchivoDescomprimido(data_descomprimida, nombreArchivo.substr(0, nombreArchivo.find_last_of(".")) + ".txt");
     }else{
         cout<<"No existe el archivo"<<endl;
     }
